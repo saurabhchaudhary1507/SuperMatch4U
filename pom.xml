@@ -1,0 +1,139 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.mkyong.common</groupId>
+	<artifactId>SpringMVC</artifactId>
+	<packaging>war</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>SpringMVC Json Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<spring.version>3.2.2.RELEASE</spring.version>
+		<jackson.version>1.9.10</jackson.version>
+		<jdk.version>1.8</jdk.version>
+		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
+    	<github.global.server>github</github.global.server>
+	</properties>
+	
+	<distributionManagement>
+   <!--  <repository>
+        <id>internal.repo</id>
+        <name>Temporary Staging Repository</name>
+        <url>file://E:/Project/SpringMVC-Json-Example/Spring3MVC</url>
+    </repository> -->
+    <repository>
+        <id>shadi-mvn-repo</id>
+        <url>https://raw.github.comsaurabhchaudhary1507/shadi/mvn-repo/</url>
+        <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+        </snapshots>
+   	 </repository>
+</distributionManagement>
+
+	<dependencies>
+
+		<!-- Spring 3 dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Jackson JSON Mapper -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>SpringMVC</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+					<wtpversion>2.0</wtpversion>
+				</configuration>
+			</plugin>
+			<plugin>
+         <groupId>com.github.github</groupId>
+         <artifactId>site-maven-plugin</artifactId>
+         <version>0.12</version>
+         <configuration>
+              <!-- git commit message -->
+              <message>Maven artifacts for ${project.version}</message>
+              <!-- disable webpage processing -->
+              <noJekyll>true</noJekyll>
+              <!-- matches distribution management repository url above -->
+              <outputDirectory>C:/Users/lenovo/Desktop/shaddi.com/maven_repo/mvn-repo</outputDirectory>
+              <!-- remote branch name -->
+              <branch>refs/heads/mvn-repo</branch>
+              <!-- If you remove this then the old artifact will be removed and new 
+               one will replace. But with the merge tag you can just release by changing 
+                                                the version -->
+              <merge>true</merge>
+              <includes>
+                <include>**/*</include>
+                </includes>
+                <!-- github repo name -->
+                <repositoryName>shadi</repositoryName>
+                <!-- github username -->
+                <repositoryOwner>saurabhchaudhary1507</repositoryOwner>
+          </configuration>
+          <executions>
+              <execution>
+                    <goals>
+                         <goal>site</goal>
+                    </goals>
+                    <phase>deploy</phase>
+              </execution>
+          </executions>
+</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.8.1</version>
+        <configuration>
+               <altDeploymentRepository>internal.repo::default::file://C:/Users/lenovo/Desktop/shaddi.com/maven_repo/mvn-repo</altDeploymentRepository>
+        </configuration>
+    </plugin>
+		</plugins>
+	</build>
+
+
+</project>
