@@ -1,4 +1,4 @@
-package com.mkyong.common.model;
+package com.superMatch4U.common.model;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.mkyong.common.controller;
+package com.superMatch4U.common.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,24 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mkyong.common.model.Person;
-import com.mkyong.common.model.Shop;
+import com.superMatch4U.common.model.Person;
+import com.superMatch4U.common.model.Shop;
 
+/**
+ * @author Saurabh
+ *
+ */
 @Controller
 @RequestMapping("/person")
-public class JSONController {
+public class AdminController {
 
-	@RequestMapping(value = "{name}", method = RequestMethod.GET)
-	public @ResponseBody Shop getShopInJSON(@PathVariable String name) {
-
-		Shop shop = new Shop();
-		shop.setName(name);
-		shop.setStaffName(new String[] { "mkyong1", "mkyong2" });
-
-		return shop;
-
-	}
-	
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public @ResponseBody List<Person> getUserDetails() {
 		
