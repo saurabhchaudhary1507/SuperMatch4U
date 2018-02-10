@@ -1,4 +1,4 @@
-var mainApp = angular.module("mainApp", ['ngRoute']);
+var mainApp = angular.module("mainApp", ['ngRoute','ui.grid']);
 
 mainApp.config(function($routeProvider) {
 	$routeProvider
@@ -9,6 +9,9 @@ mainApp.config(function($routeProvider) {
 		.when('/viewStudents', {
 			templateUrl: 'viewStudent.html',
 			controller: 'StudentController'
+		}).when('/users', {
+			templateUrl: 'users.html',
+			controller: 'userController'
 		})
 		.otherwise({
 			redirectTo: '/home'
@@ -23,4 +26,17 @@ mainApp.controller('StudentController', function($scope) {
 	];
 
 	$scope.message = "Click on the hyper link to view the students list.";
+});
+
+mainApp.controller('userController', function($scope,$http) {
+
+	console.log('called');
+	$scope.gridOptions = {
+	        excludeProperties: '__metadata',
+	    };
+	$scope.persons='';
+	$http.get('rest/person/users').success(function(response){
+		console.log(response);
+		$scope.gridOptions.data = response;
+	});
 });

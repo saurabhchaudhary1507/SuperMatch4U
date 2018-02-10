@@ -3,6 +3,12 @@
 <head lang="en">
 <meta charset="utf-8">
 <title>AngularJS Routing</title>
+<script data-require="angular.js@1.4.x" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js" data-semver="1.4.6"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+    <script src="http://ui-grid.info/release/ui-grid-unstable.js"></script>
+    <link rel="stylesheet" href="http://ui-grid.info/release/ui-grid-unstable.css" type="text/css">
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -15,6 +21,9 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
 <script type="text/javascript" src="js/test.js"></script>
+<style type="text/css">
+.grid{}
+</style>
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 
@@ -32,8 +41,8 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-						title="Dashboard"><a class="nav-link" href="index.html">
-							<i class="fa fa-fw fa-dashboard"></i> <span class="nav-link-text">Dashboard</span>
+						title="Dashboard"><a class="nav-link" href="#users">
+							<i class="fa fa-fw fa-dashboard"></i> <span class="nav-link-text">User</span>
 					</a></li>
 					<li class="nav-item" data-toggle="tooltip" data-placement="right"
 						title="Dashboard"><a class="nav-link" href="index.html">

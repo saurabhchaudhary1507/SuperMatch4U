@@ -1,5 +1,8 @@
 package com.mkyong.common.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,10 +29,14 @@ public class JSONController {
 
 	}
 	
-	@RequestMapping(value = "getUserDetails", method = RequestMethod.GET)
-	public @ResponseBody String getUserDetails() {
-
-		return "saurabh";
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
+	public @ResponseBody List<Person> getUserDetails() {
+		
+		List<Person> persons = new ArrayList<Person>();
+		persons.add(new Person("Saurabh","nn","Chaudhary"));
+		persons.add(new Person("Devendra","nn","Chaudhary"));
+		persons.add(new Person("Michael","nn","Jackson"));
+		return persons;
 
 	}
 	

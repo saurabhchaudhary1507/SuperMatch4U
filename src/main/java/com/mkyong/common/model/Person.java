@@ -10,6 +10,12 @@ public class Person {
 	/*private Date dob;
 	private String createdFor;*/
 	
+	public Person(String firstName,String middleName,String lastName) {
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -40,5 +46,12 @@ public class Person {
 	public void setCreatedFor(String createdFor) {
 		this.createdFor = createdFor;
 	}*/
+
+	@Override
+	public String toString() {
+		return "Person [firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName + "]";
+	}
+	
+	
 	
 }
