@@ -1,8 +1,8 @@
 package com.superMatch4U.common.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.superMatch4U.common.model.Person;
-import com.superMatch4U.common.model.Shop;
+import com.superMatch4U.common.service.AdminService;
 
 /**
  * @author Saurabh
@@ -21,16 +21,19 @@ import com.superMatch4U.common.model.Shop;
 @Controller
 @RequestMapping("/person")
 public class AdminController {
+	
+	@Autowired
+	AdminService adminService;
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public @ResponseBody List<Person> getUserDetails() {
 		
-		List<Person> persons = new ArrayList<Person>();
+		/*List<Person> persons = new ArrayList<Person>();
 		persons.add(new Person("Saurabh","nn","Chaudhary"));
 		persons.add(new Person("Devendra","nn","Chaudhary"));
-		persons.add(new Person("Michael","nn","Jackson"));
-		return persons;
-
+		persons.add(new Person("Michael","nn","Jackson"));*/
+		
+		return adminService.getAllUsers();
 	}
 	
 	@RequestMapping(value = "/saveUserDetails", method = RequestMethod.POST,headers="Accept=application/json")

@@ -16,6 +16,10 @@ public class Person {
 		this.lastName = lastName;
 	}
 	
+	public Person() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
